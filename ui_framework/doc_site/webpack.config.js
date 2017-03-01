@@ -13,22 +13,28 @@ module.exports = {
   },
 
   resolve: {
-    root: [
-      path.resolve(__dirname, 'src/ui_framework/doc_site')
+    modules: [
+      path.resolve(__dirname, 'src/ui_framework/doc_site'),
+     'node_modules'
     ]
   },
 
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /node_modules/,
       query: {
-        presets: ['es2015', 'react'],
+        presets: ['es2015', 'react', {'modules': false}],
       },
     }, {
       test: /\.scss$/,
-      loaders: ['style', 'css', 'postcss', 'sass'],
+      use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+      ],
       exclude: /node_modules/
     }, {
       test: /\.html$/,
