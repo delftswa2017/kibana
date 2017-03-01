@@ -8,13 +8,13 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'ui_framework/doc_site/build'),
+    path: path.join(__dirname, 'ui_framework/doc_site/build'),
     filename: 'bundle.js'
   },
 
   resolve: {
     modules: [
-      path.resolve(__dirname, 'src/ui_framework/doc_site'),
+      path.join(__dirname, 'src/ui_framework/doc_site'),
      'node_modules'
     ]
   },
@@ -25,8 +25,8 @@ module.exports = {
       loader: 'babel-loader',
       exclude: /node_modules/,
       query: {
-        presets: ['es2015', 'react', {'modules': false}],
-      },
+        presets: ['es2015', 'react'],
+      }
     }, {
       test: /\.scss$/,
       use: [
